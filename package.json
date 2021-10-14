@@ -1,0 +1,31 @@
+{
+  "dependencies": {
+    "hour-to-day-or-night": "^1.0.0",
+    "instagram-private-api": "^1.45.1",
+    "node-cron": "^3.0.0",
+    "openweather-apis": "^4.4.2"
+  },
+  "name": "weatherintoyourbiography",
+  "version": "1.0.0",
+  "description": "Add Weather into your instagram biography",
+  "main": "main.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TopeEstLa/WeatherIntoYourBiography.git"
+  },
+  "keywords": [
+    "Instagram",
+    "Weather",
+    "OpenWeatherApi"
+  ],
+  "author": "TopeEstLa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TopeEstLa/WeatherIntoYourBiography/issues"
+  },
+  "homepage": "https://github.com/TopeEstLa/WeatherIntoYourBiography#readme"
+}
