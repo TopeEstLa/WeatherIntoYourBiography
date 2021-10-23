@@ -8,7 +8,7 @@ const instagramClient = new IgApiClient();
 
 instagramClient.state.generateDevice(USERNAME);
 
-async function setupOpenWeatherApi() {
+function setupOpenWeatherApi() {
     openWeatherApi.setLang('fr');
     openWeatherApi.setCity(CITY);
     openWeatherApi.setUnits('metric');
@@ -35,7 +35,7 @@ console.log(`Started on ${new Date().toLocaleString()}`);
 cron.schedule('*/10 * * * *', async () => {
 
     if (hourToDayOrNight(parseInt(new Date().getHours().toLocaleString())) === "day") {
-        openWeatherApi.getSmartJSON(async function (err, smart) {
+        openWeatherApi.getSmartJSON(async (err, smart) => {
             switch (smart.description) {
                 case "ciel dégagé":
                     await updateBiography("☀️");
@@ -48,6 +48,12 @@ cron.schedule('*/10 * * * *', async () => {
                     break;
                 case "nuageux":
                     await updateBiography("☁️");
+                    break;
+                case "brume sèche": case "brume": case "brouillard":
+                    await updateBiography("🌫");
+                    break;
+                case "légère pluie": case "pluie modérée":
+                    await updateBiography("🌧");
                     break;
                 default:
                     console.log("Weather unrecognized " + smart.description);
