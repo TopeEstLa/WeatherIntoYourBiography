@@ -52,7 +52,7 @@ cron.schedule('*/10 * * * *', async () => {
                 case "brume sèche": case "brume": case "brouillard":
                     await updateBiography("🌫");
                     break;
-                case "légère pluie": case "pluie modérée":
+                case "légère pluie": case "pluie modérée": case "forte pluie":
                     await updateBiography("🌧");
                     break;
                 default:
