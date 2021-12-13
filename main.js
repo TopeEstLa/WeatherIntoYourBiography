@@ -22,9 +22,9 @@ async function loginInstagramClient() {
     //await instagramClient.account.setBiography(`It is currently ${new Date().toLocaleString()}`);
 }
 
-async function updateBiography(emoji) {
-    console.log("Biography updated");
-    await instagramClient.account.setBiography(emoji);
+async function updateBiography(bio) {
+    console.log("Biography updated to " + bio);
+    await instagramClient.account.setBiography(bio);
 }
 
 setupOpenWeatherApi();
@@ -38,29 +38,29 @@ cron.schedule('*/10 * * * *', async () => {
         openWeatherApi.getSmartJSON(async (err, smart) => {
             switch (smart.description) {
                 case "ciel dégagé":
-                    await updateBiography("☀️");
+                    await updateBiography("☀️ - " + smart.temp + "°C");
                     break;
                 case "peu nuageux":
-                    await updateBiography("🌤");
+                    await updateBiography("🌤 - " + smart.temp + "°C");
                     break;
                 case "partiellement nuageux": case "couvert":
-                    await updateBiography("⛅️");
+                    await updateBiography("⛅️ - " + smart.temp + "°C");
                     break;
                 case "nuageux":
-                    await updateBiography("☁️");
+                    await updateBiography("☁️ - " + smart.temp + "°C");
                     break;
                 case "brume sèche": case "brume": case "brouillard":
-                    await updateBiography("🌫");
+                    await updateBiography("🌫 - " + smart.temp + "°C");
                     break;
                 case "légère pluie": case "pluie modérée": case "forte pluie":
-                    await updateBiography("🌧");
+                    await updateBiography("🌧 - " + smart.temp + "°C");
                     break;
                 default:
                     console.log("Weather unrecognized " + smart.description);
             }
         });
     } else {
-        await updateBiography("🌙");
+        await updateBiography("🌙 - " + smart.temp + "°C");
     }
 
 });
