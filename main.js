@@ -38,29 +38,29 @@ cron.schedule('*/10 * * * *', async () => {
         openWeatherApi.getSmartJSON(async (err, smart) => {
             switch (smart.description) {
                 case "ciel dégagé":
-                    await updateBiography("☀️ - " + smart.temp + "°C");
+                    await updateBiography("☀️ | " + smart.temp + "°C");
                     break;
                 case "peu nuageux":
-                    await updateBiography("🌤 - " + smart.temp + "°C");
+                    await updateBiography("🌤 | " + smart.temp + "°C");
                     break;
                 case "partiellement nuageux": case "couvert":
-                    await updateBiography("⛅️ - " + smart.temp + "°C");
+                    await updateBiography("⛅️ | " + smart.temp + "°C");
                     break;
                 case "nuageux":
-                    await updateBiography("☁️ - " + smart.temp + "°C");
+                    await updateBiography("☁️ | " + smart.temp + "°C");
                     break;
                 case "brume sèche": case "brume": case "brouillard":
-                    await updateBiography("🌫 - " + smart.temp + "°C");
+                    await updateBiography("🌫 | " + smart.temp + "°C");
                     break;
                 case "légère pluie": case "pluie modérée": case "forte pluie":
-                    await updateBiography("🌧 - " + smart.temp + "°C");
+                    await updateBiography("🌧 | " + smart.temp + "°C");
                     break;
                 default:
                     console.log("Weather unrecognized " + smart.description);
             }
         });
     } else {
-        await updateBiography("🌙 - " + smart.temp + "°C");
+        await updateBiography("🌙 | " + smart.temp + "°C");
     }
 
 });
